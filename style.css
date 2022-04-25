@@ -1,0 +1,36 @@
+/*
+ Theme Name:   Monsta Chile
+ Description:  Monsta child theme for Astra theme
+ Author:       Michal Carson
+ Template:     astra
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+.search-page {
+    min-height: 600px;
+}
+
+.search-map.offcanvas,
+.search-category.offcanvas {
+    top: 142px;
+}
+
+ol.breadcrumb {
+    margin-left: 0;
+}
+
+.ast-theme-transparent-header #masthead {
+    position: relative !important;
+}
+
+.site-content .ast-container,
+.ast-separate-container #primary,
+.ast-separate-container .no-results {
+    padding: revert;
+}
+
+.site-primary-footer-wrap[data-section="section-primary-footer-builder"] .ast-builder-grid-row {
+    grid-column-gap: 50px;
+}
