@@ -31,6 +31,10 @@ ol.breadcrumb {
     padding: revert;
 }
 
+.site-primary-header-wrap.ast-container {
+    margin: 0;
+}
+
 .site-primary-footer-wrap[data-section="section-primary-footer-builder"] .ast-builder-grid-row {
     grid-column-gap: 50px;
 }
@@ -60,8 +64,11 @@ ol.breadcrumb {
 @media (max-width: 782px) {
     .ast-container .wp-block-columns .wp-block-column {
         min-width: 100px;
-        max-width: 100px;
         margin-left: auto!important;
         margin-right: auto!important;
+    }
+
+    .ast-container .wp-block-columns .wp-block-column figure {
+        max-width: 150px;
     }
 }
