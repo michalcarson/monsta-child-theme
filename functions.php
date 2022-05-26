@@ -9,6 +9,7 @@
  * @package Astra-monsta-child
  * @since 1.0.0
  */
+require_once(get_theme_file_path() . '/widgets/MonstaCartStatusWidget.php');
 
 /**
  * Enqueue styles
@@ -38,6 +39,26 @@ function child_enqueue_styles()
         wp_get_theme()->get('Version'),
         true
     );
+
+    wp_enqueue_style(
+        'monsta-widgets-css',
+        'https://ecomwidgets.com/dist/widgets.css',
+        false,
+        wp_get_theme()->get('Version'),
+        'all'
+    );
+
+    wp_enqueue_script(
+        'monsta-widgets-script',
+        'https://ecomwidgets.com/dist/widgets.bundle.js',
+        false,
+        wp_get_theme()->get('Version'),
+        true
+    );
 }
 
 add_action('wp_enqueue_scripts', 'child_enqueue_styles');
+
+add_action('widgets_init', function () {
+    register_widget(new MonstaCartStatusWidget());
+});
