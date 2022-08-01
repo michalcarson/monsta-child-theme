@@ -1,5 +1,5 @@
 /*
- Theme Name:   Monsta Chile
+ Theme Name:   Monsta Chile for Astra
  Description:  Monsta child theme for Astra theme
  Author:       Michal Carson
  Template:     astra
@@ -7,6 +7,16 @@
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
 */
+
+.wp-block-cover a {
+    color: var(--ast-global-color-5);
+    text-decoration: none;
+}
+
+.wp-block-cover a:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
 
 .search-page {
     min-height: 600px;
@@ -28,15 +38,23 @@ ol.breadcrumb {
 .site-content .ast-container,
 .ast-separate-container #primary,
 .ast-separate-container .no-results {
-    padding: revert;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.wp-block-columns {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.ast-no-sidebar .entry-content .alignfull {
+    margin: 0;
 }
 
 .site-primary-header-wrap.ast-container {
     margin: 0;
-}
-
-.site-primary-footer-wrap[data-section="section-primary-footer-builder"] .ast-builder-grid-row {
-    grid-column-gap: 50px;
 }
 
 .ast-container .wp-block-cover .wp-block-columns .wp-block-column,
@@ -61,6 +79,91 @@ ol.breadcrumb {
     margin: 0;
 }
 
+.site-footer,
+.site-footer div,
+.ast-footer-copyright {
+    color: #cecece;
+    background-color: rgba(0,29,54,0.71);
+}
+
+.site-footer .ast-builder-html-element,
+.site-footer .ast-builder-layout-element {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+
+.site-footer .ast-footer-html-2,
+.site-footer .ast-footer-copyright:first-of-type {
+    margin-top: 1em;
+}
+
+.site-footer a {
+    color: #cecece;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: #cecece;
+}
+
+.site-footer a img {
+    margin-left: auto;
+    margin-right: .5rem;
+    margin-top: 4px;
+}
+
+.site-primary-footer-wrap[data-section="section-primary-footer-builder"] {
+    padding: .5rem;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.site-primary-footer-wrap[data-section="section-primary-footer-builder"] .ast-builder-grid-row {
+    grid-column-gap: 50px;
+}
+
+.site-below-footer-wrap[data-section="section-below-footer-builder"] {
+    min-height: auto;
+}
+
+.site-below-footer-wrap[data-section="section-below-footer-builder"] .ast-builder-grid-row {
+    max-width: 100%;
+}
+
+.site-above-footer-wrap,
+.site-below-footer-wrap {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.site-below-footer-wrap[data-section="section-below-footer-builder"] {
+      border-top-width: 0;
+  }
+
+.site-primary-footer-wrap[data-section="section-primary-footer-builder"] {
+    display: none!important;
+}
+
+@media (min-width: 993px) {
+    .ast-separate-container #primary {
+        margin: 0;
+    }
+}
+
+@media (max-width: 921px) {
+    footer .site-footer-below-section-2 {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 922px) {
+    .ast-container {
+        max-width: 100%;
+    }
+}
+
 @media (max-width: 782px) {
     .ast-container .wp-block-columns .wp-block-column {
         min-width: 100px;
@@ -70,5 +173,10 @@ ol.breadcrumb {
 
     .ast-container .wp-block-columns .wp-block-column figure {
         max-width: 150px;
+    }
+
+    .site-footer-section {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
