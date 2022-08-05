@@ -79,6 +79,11 @@ ol.breadcrumb {
     margin: 0;
 }
 
+.site-footer .site-footer-section {
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .site-footer,
 .site-footer div,
 .ast-footer-copyright {
@@ -94,8 +99,13 @@ ol.breadcrumb {
 
 
 .site-footer .ast-footer-html-2,
-.site-footer .ast-footer-copyright:first-of-type {
+.site-footer .site-footer-section-3,
+.site-footer .ast-footer-copyright {
     margin-top: 1em;
+}
+
+.site-footer .ast-footer-copyright .ast-footer-copyright {
+    margin-top: 0;
 }
 
 .site-footer a {
