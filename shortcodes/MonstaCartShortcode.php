@@ -7,15 +7,21 @@ class MonstaCartShortcode
         ob_start();
         $id = 'cart' . rand(1, 10000);
 
+        $config = require(get_theme_file_path('/include/config.php'));
+        $json = json_encode(
+            array_merge(
+                ['target' => $id],
+                $config
+            )
+        );
+
         echo <<<HERE
             <div id="{$id}"></div>
             <script>
-            const getBusinessId = () => {return 11007419;} // todo: RCI Express id is hardcoded
+            const getBusinessId = () => {return {$config['businessId']};}
             setTimeout(() => {
                 if (typeof checkout === 'function') {
-                    checkout({
-                        target: '{$id}'
-                    });
+                    checkout({$json});
                 } else {
                     console.log('typeof checkout = ' + typeof checkout);
                 }

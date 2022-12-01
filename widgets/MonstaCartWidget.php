@@ -15,14 +15,20 @@ class MonstaCartWidget extends WP_Widget
     {
         $id = 'cart' . rand(1, 10000);
 
+        $config = require(get_theme_file_path('/include/config.php'));
+        $json = json_encode(
+            array_merge(
+                ['target' => $id],
+                $config
+            )
+        );
+
         echo <<<HERE
             <div id="{$id}"></div>
             <script>
             setTimeout(() => {
                 if (typeof checkout === 'function') {
-                    checkout({
-                        target: '{$id}'
-                    });
+                    checkout({$json});
                 } else {
                     console.log('typeof checkout = ' + typeof widgets);
                 }
