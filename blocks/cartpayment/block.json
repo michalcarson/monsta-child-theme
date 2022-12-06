@@ -1,0 +1,13 @@
+{
+    "apiVersion": 2,
+    "title": "Shopping Cart Payment",
+    "name": "monsta/cartpayment",
+    "category": "monsta",
+    "icon": "bank",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./block.css",
+    "supports": {
+        "color": true,
+        "html": false
+    }
+}

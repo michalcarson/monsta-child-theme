@@ -1,0 +1,13 @@
+{
+    "apiVersion": 2,
+    "title": "Shopping Cart List",
+    "name": "monsta/cartlist",
+    "category": "monsta",
+    "icon": "media-spreadsheet",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./block.css",
+    "supports": {
+        "color": true,
+        "html": false
+    }
+}

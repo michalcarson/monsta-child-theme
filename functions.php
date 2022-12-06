@@ -74,12 +74,20 @@ add_action('wp_enqueue_scripts', function () {
         wp_get_theme()->get('Version'),
         true
     );
+
+    // The wp_localize_script below is intended to pass translations to the javascript
+    // but we can also use it to pass configuration information. That information will
+    // be available under a global javascript variable "monsta" with the structure
+    // as created below. We can, for instance, access monsta.business.name or
+    // monsta.api.url from our client-side javascript in the "view.js" files.
+    $config = require(get_theme_file_path('/include/config.php'));
+    wp_localize_script('monsta-widgets-script', 'monsta', ['config' => $config]);
 });
 
-add_action('widgets_init', function () {
-    register_widget(new MonstaCartStatusWidget());
-    register_widget(new MonstaCartWidget());
-});
+//add_action('widgets_init', function () {
+//    register_widget(new MonstaCartStatusWidget());
+//    register_widget(new MonstaCartWidget());
+//});
 
 add_filter('body_class', function ($classes) {
     if ( ! in_array('shopping', $classes)) {
@@ -96,3 +104,5 @@ add_action( 'after_setup_theme', function () {
     $agp = new Astra_Global_Palette();
     $agp->support_editor_color_palette();
 } );
+
+require_once(get_theme_file_path('/blocks/register-blocks.php'));

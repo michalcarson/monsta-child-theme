@@ -1,0 +1,13 @@
+{
+    "apiVersion": 2,
+    "title": "Shopping Cart Status",
+    "name": "monsta/cartstatus",
+    "category": "monsta",
+    "icon": "cart",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./block.css",
+    "supports": {
+        "color": true,
+        "html": false
+    }
+}
