@@ -20,6 +20,19 @@ require_once(get_theme_file_path('/widgets/MonstaCartStatusWidget.php'));
 
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style(
+        'astra-monsta-child-bootstrap-css',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'
+    );
+
+    wp_enqueue_script(
+        'astra-monsta-child-bootstrap-js',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
+        false,
+        null,
+        true
+    );
+
+    wp_enqueue_style(
         'astra-monsta-child-theme-css',
         get_stylesheet_directory_uri() . '/style.css',
         ['astra-theme-css'],
@@ -96,13 +109,21 @@ add_filter('body_class', function ($classes) {
     return $classes;
 });
 
-add_action( 'init', function () {
-    add_shortcode( 'monsta_cart', ['MonstaCartShortcode', 'display'] );
+add_action('init', function () {
+    add_shortcode('monsta_cart', ['MonstaCartShortcode', 'display']);
+
+    register_block_pattern_category('monsta', ['label' => 'MonstaCommerce']);
 });
 
-add_action( 'after_setup_theme', function () {
+add_action('after_setup_theme', function () {
     $agp = new Astra_Global_Palette();
     $agp->support_editor_color_palette();
-} );
+
+    /* astra removes this support */
+    add_theme_support('block-templates');
+    add_editor_style([
+        'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
+    ]);
+});
 
 require_once(get_theme_file_path('/blocks/register-blocks.php'));

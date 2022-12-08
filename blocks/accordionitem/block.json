@@ -1,0 +1,44 @@
+{
+    "apiVersion": 2,
+    "title": "Accordion Item",
+    "name": "monsta/accordionitem",
+    "category": "monsta",
+    "icon": "media-spreadsheet",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./block.css",
+    "supports": {
+        "color": true,
+        "html": false
+    },
+    "attributes": {
+        "content": {
+            "type": "string",
+            "source": "html",
+            "selector": ".accordion-body",
+            "default": "Add some content here"
+        },
+        "id": {
+            "type": "string",
+            "source": "attribute",
+            "attribute": "id"
+        },
+        "parentId": {
+            "type": "string",
+            "source": "attribute",
+            "attribute": "data-bs-parent",
+            "selector": "div.accordion-collapse"
+        },
+        "title": {
+            "type": "string",
+            "source": "text",
+            "selector": "button",
+            "default": "Heading"
+        },
+        "open": {
+            "type": "boolean",
+            "default": false
+        },
+    "parent": ["monsta/accordion"],
+    "usesContext": ["monsta/accordion/parentId"]
+    }
+}

@@ -8,6 +8,7 @@
     "editorStyle": "file:./block.css",
     "supports": {
         "color": true,
-        "html": false
+        "html": false,
+        "multiple": false
     }
 }

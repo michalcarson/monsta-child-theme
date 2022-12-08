@@ -4,6 +4,20 @@
  */
 
 add_action('init', function () {
+    /*
+     * Javascript blocks are rendered only on the UI
+     */
+    $javascript_blocks = [
+        'accordion',
+        'accordionitem',
+    ];
+
+    foreach ($javascript_blocks as $javascript_block) {
+        register_block_type(
+            __DIR__ . '/' . $javascript_block
+        );
+    }
+
     /* Dynamic blocks are rendered server-side using a PHP file.
      *
      * register_block_type will cause WordPress to read the block configuration from
