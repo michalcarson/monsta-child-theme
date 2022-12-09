@@ -1,0 +1,11 @@
+/* undo astra styling */
+.entry-content .accordion-item h1,
+.entry-content .accordion-item h2,
+.entry-content .accordion-item h3,
+.entry-content .accordion-item h4,
+.entry-content .accordion-item h5,
+.entry-content .accordion-item h6 {
+    margin-bottom: 0;
+    font-size: 2rem;
+    line-height: 1.2;
+}

@@ -20,7 +20,9 @@
         "id": {
             "type": "string",
             "source": "attribute",
-            "attribute": "id"
+            "selector": ".accordion",
+            "attribute": "id",
+            "default": "MAcc_"
         },
         "flush": {
             "type": "boolean",
@@ -28,6 +30,6 @@
         }
     },
     "providesContext": {
-        "monsta/accordion/parentId": "id"
+        "monsta/accordionParentId": "id"
     }
 }

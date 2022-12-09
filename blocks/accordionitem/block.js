@@ -1,57 +1,108 @@
 /*
  * This script is loaded for the block editor.
  */
-(function (blocks, element, blockEditor) {
+(function (blocks, element, blockEditor, components) {
     const el = element.createElement;
     const InnerBlocks = blockEditor.InnerBlocks;
     const useBlockProps = blockEditor.useBlockProps;
 
-    const render = function (attributes, parentId, blockProps, saving) {
+    const renderHeader = function (attributes) {
         const button = el(
             'button', {
                 className: "accordion-button",
                 type: "button",
                 "data-bs-toggle": "collapse",
-                "data-bs-target": "#collapseOne",
-                "aria-expanded": "true",
-                "aria-controls": "collapseOne"
+                "data-bs-target": "#" + attributes.id,
+                "aria-expanded": (attributes.open ? 'true' : 'false'),
+                "aria-controls": attributes.id
             },
             attributes.title
         );
-        const header = el('h2', {className: "accordion-header", id: "headingOne"}, button);
+        return el('h2', {className: "accordion-header", id: "heading" + attributes.id}, button);
+    }
 
+    const renderBody = function (attributes, parentId, saving) {
         let innerContent = 'this completely failed';
         const innerDivProps = {className: "accordion-body"};
 
         if (saving) {
             innerContent = el(InnerBlocks.Content);
         } else {
-            innerContent = el(InnerBlocks);
-            innerDivProps.renderAppender = InnerBlocks.ButtonBlockAppender;
-            innerDivProps.placeholder = "this is a placeholder";
+            innerContent = el(InnerBlocks, {
+                // renderAppender: InnerBlocks.ButtonBlockAppender,
+                placeholder: "this is the other placeholder"
+            });
         }
 
         const innerDiv = el('div', innerDivProps, innerContent);
-        const body = el('div', {
-            id: "collapseOne",
+        return el('div', {
+            id: attributes.id,
             className: "accordion-collapse collapse" + (attributes.open ? ' show' : ''),
-            "aria-labelledby": "headingOne",
+            "aria-labelledby": "heading" + attributes.id,
             "data-bs-parent": parentId
         }, innerDiv);
-
-        return el('div', blockProps, [header, body]);
     }
 
     blocks.registerBlockType('monsta/accordionitem', {
-        edit: function ({attributes, context}) {
+        edit: function ({attributes, context, setAttributes, isSelected}) {
+            const toggleOpen = function () {
+                setAttributes({open: !attributes.open});
+            }
+            const updateHeading = function (val) {
+                setAttributes({title: val});
+            }
+            const updateId = function (val) {
+                setAttributes({id: val});
+            }
+
             const parentId = context['monsta/accordion/parentId'];
-            const blockProps = useBlockProps({className: "accordion-item"});
-            return render(attributes, parentId, blockProps, false);
+            const blockProps = useBlockProps({className: "accordion-item", key: attributes.id});
+
+            return el('div', blockProps, [
+                renderHeader(attributes),
+                renderBody(attributes, parentId, false),
+                isSelected
+                    ? el('button',
+                        {
+                            onClick: toggleOpen,
+                            className: "toggleOpen btn btn-primary"
+                        },
+                        (attributes.open ? 'Start closed' : 'Start open'))
+                    : null,
+                isSelected
+                    ? el(components.TextControl,
+                        {
+                            onChange: updateHeading,
+                            className: "IdTextInput form-control",
+                            label: 'Accordion Item Heading',
+                            value: attributes.title
+                        })
+                    : null,
+                isSelected
+                    ? el(components.TextControl,
+                        {
+                            onChange: updateId,
+                            className: "IdTextInput form-control",
+                            label: 'Accordion Item Id',
+                            value: attributes.id
+                        })
+                    : null
+            ]);
         },
-        save: function ({attributes}) {
+
+        save: function ({attributes, ...props}) {
             const parentId = attributes.parentId;
-            const blockProps = useBlockProps.save({className: "accordion-item"});
-            return render(attributes, parentId, blockProps, true);
+            const blockProps = useBlockProps.save(
+                {
+                    className: "accordion-item",
+                    key: attributes.id,
+                    open: attributes.open,
+                });
+
+            return el('div', blockProps, [
+                renderHeader(attributes),
+                renderBody(attributes, parentId, true)
+            ]);
         }
     });
-})(window.wp.blocks, window.wp.element, window.wp.blockEditor);
+})(window.wp.blocks, window.wp.element, window.wp.blockEditor, window.wp.components);

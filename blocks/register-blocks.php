@@ -70,3 +70,18 @@ add_filter('block_categories_all', function ($block_categories, $editor_context)
     }
     return $block_categories;
 }, 10, 2);
+
+add_action( 'enqueue_block_editor_assets', function() {
+    wp_enqueue_style(
+        'astra-monsta-child-bootstrap-css',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'
+    );
+
+    wp_enqueue_script(
+        'astra-monsta-child-bootstrap-js',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
+        false,
+        null,
+        true
+    );
+});

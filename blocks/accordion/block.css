@@ -1,3 +1,17 @@
 .wp-block-monsta-accordion {
     min-height: 50px;
 }
+
+.wp-block-monsta-accordion h2 {
+    margin-top: 0;
+}
+
+.wp-block-monsta-accordion > button,
+.wp-block-monsta-accordion .form-control {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.wp-block-monsta-accordion > button {
+    margin-left: .5em;
+}

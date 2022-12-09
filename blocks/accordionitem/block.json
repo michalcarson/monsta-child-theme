@@ -6,6 +6,7 @@
     "icon": "media-spreadsheet",
     "editorScript": "file:./block.js",
     "editorStyle": "file:./block.css",
+    "style": "file:./view.css",
     "supports": {
         "color": true,
         "html": false
@@ -19,6 +20,7 @@
         },
         "id": {
             "type": "string",
+            "selector": ".accordion-item",
             "source": "attribute",
             "attribute": "id"
         },
@@ -39,6 +41,6 @@
             "default": false
         },
     "parent": ["monsta/accordion"],
-    "usesContext": ["monsta/accordion/parentId"]
+    "usesContext": ["monsta/accordionParentId"]
     }
 }
