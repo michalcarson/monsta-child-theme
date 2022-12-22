@@ -9,7 +9,7 @@
     const renderHeader = function (attributes) {
         const button = el(
             'button', {
-                className: "accordion-button",
+                className: "accordion-button" + (attributes.open ? '' : ' collapsed'),
                 type: "button",
                 "data-bs-toggle": "collapse",
                 "data-bs-target": "#" + attributes.id,
@@ -39,12 +39,15 @@
             id: attributes.id,
             className: "accordion-collapse collapse" + (attributes.open ? ' show' : ''),
             "aria-labelledby": "heading" + attributes.id,
-            "data-bs-parent": parentId
+            "data-bs-parent": "#" + parentId
         }, innerDiv);
     }
 
     blocks.registerBlockType('monsta/accordionitem', {
-        edit: function ({attributes, context, setAttributes, isSelected}) {
+        parent: ['monsta/accordion'],
+        usesContext: ['monsta/accordionParentId'],
+        edit: function ({attributes, context, setAttributes, isSelected, clientId}) {
+
             const toggleOpen = function () {
                 setAttributes({open: !attributes.open});
             }
@@ -55,8 +58,15 @@
                 setAttributes({id: val});
             }
 
-            const parentId = context['monsta/accordion/parentId'];
-            const blockProps = useBlockProps({className: "accordion-item", key: attributes.id});
+            const parentId = context['monsta/accordionParentId'];
+            setAttributes({parentId: parentId});
+
+            const blockProps = useBlockProps(
+                {
+                    className: "accordion-item",
+                    key: attributes.id,
+                    open: attributes.open,
+                });
 
             return el('div', blockProps, [
                 renderHeader(attributes),
@@ -67,7 +77,7 @@
                             onClick: toggleOpen,
                             className: "toggleOpen btn btn-primary"
                         },
-                        (attributes.open ? 'Start closed' : 'Start open'))
+                        (attributes.open ? 'Click to start closed' : 'Click to start open'))
                     : null,
                 isSelected
                     ? el(components.TextControl,
@@ -90,8 +100,10 @@
             ]);
         },
 
-        save: function ({attributes, ...props}) {
-            const parentId = attributes.parentId;
+        save: function ({attributes}) {
+            const parentId = (attributes.parentId && attributes.parentId.replace)
+                ? attributes.parentId.replace('#', '')
+                : attributes.parentId;
             const blockProps = useBlockProps.save(
                 {
                     className: "accordion-item",

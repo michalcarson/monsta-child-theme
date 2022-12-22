@@ -40,25 +40,27 @@ add_action('wp_enqueue_scripts', function () {
         'all'
     );
 
-    wp_enqueue_style(
-        'monsta-inventory-css',
-        'https://ecomwidgets.com/dist/inventory.css',
-        false,
-        wp_get_theme()->get('Version'),
-        'all'
-    );
+    $baseUrl = monsta_get_baseurl();
 
-    wp_enqueue_script(
-        'monsta-inventory-script',
-        'https://ecomwidgets.com/dist/inventory.bundle.js',
-        false,
-        wp_get_theme()->get('Version'),
-        true
-    );
+//    wp_enqueue_style(
+//        'monsta-inventory-css',
+//        $baseUrl  . '/dist/inventory.css',
+//        false,
+//        wp_get_theme()->get('Version'),
+//        'all'
+//    );
+//
+//    wp_enqueue_script(
+//        'monsta-inventory-script',
+//        $baseUrl  . '/dist/inventory.bundle.js',
+//        false,
+//        wp_get_theme()->get('Version'),
+//        true
+//    );
 
     wp_enqueue_style(
         'monsta-widgets-css',
-        'https://ecomwidgets.com/dist/widgets.css',
+        $baseUrl  . '/dist/widgets.css',
         false,
         wp_get_theme()->get('Version'),
         'all'
@@ -66,27 +68,27 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_enqueue_script(
         'monsta-widgets-script',
-        'https://ecomwidgets.com/dist/widgets.bundle.js',
+        $baseUrl  . '/dist/widgets.bundle.js',
         false,
         wp_get_theme()->get('Version'),
         true
     );
 
-    wp_enqueue_style(
-        'monsta-checkout-css',
-        'https://ecomwidgets.com/dist/checkout.css',
-        false,
-        wp_get_theme()->get('Version'),
-        'all'
-    );
-
-    wp_enqueue_script(
-        'monsta-checkout-script',
-        'https://ecomwidgets.com/dist/checkout.bundle.js',
-        false,
-        wp_get_theme()->get('Version'),
-        true
-    );
+//    wp_enqueue_style(
+//        'monsta-checkout-css',
+//        $baseUrl  . '/dist/checkout.css',
+//        false,
+//        wp_get_theme()->get('Version'),
+//        'all'
+//    );
+//
+//    wp_enqueue_script(
+//        'monsta-checkout-script',
+//        $baseUrl  . '/dist/checkout.bundle.js',
+//        false,
+//        wp_get_theme()->get('Version'),
+//        true
+//    );
 
     // The wp_localize_script below is intended to pass translations to the javascript
     // but we can also use it to pass configuration information. That information will
@@ -122,8 +124,13 @@ add_action('after_setup_theme', function () {
     /* astra removes this support */
     add_theme_support('block-templates');
     add_editor_style([
-        'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'
     ]);
 });
 
 require_once(get_theme_file_path('/blocks/register-blocks.php'));
+
+function monsta_get_baseurl()
+{
+    return WP_DEBUG ? 'http://localhost:8007' : 'https://ecomwidgets.com';
+}

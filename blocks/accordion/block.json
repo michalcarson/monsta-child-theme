@@ -1,6 +1,8 @@
 {
     "apiVersion": 2,
     "title": "Accordion",
+    "description": "An accordion control, implemented with Bootstrap.",
+    "keywords": ["accordion", "bootstrap", "collapse", "expand", "dropdown"],
     "name": "monsta/accordion",
     "category": "monsta",
     "icon": "media-spreadsheet",
@@ -11,12 +13,6 @@
         "html": false
     },
     "attributes": {
-        "content": {
-            "type": "string",
-            "source": "html",
-            "selector": ".accordion",
-            "default": ""
-        },
         "id": {
             "type": "string",
             "source": "attribute",

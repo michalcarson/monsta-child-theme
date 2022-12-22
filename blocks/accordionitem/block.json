@@ -1,6 +1,7 @@
 {
     "apiVersion": 2,
     "title": "Accordion Item",
+    "description": "Inner segment of an accordion control, implemented with Bootstrap.",
     "name": "monsta/accordionitem",
     "category": "monsta",
     "icon": "media-spreadsheet",
@@ -12,17 +13,11 @@
         "html": false
     },
     "attributes": {
-        "content": {
-            "type": "string",
-            "source": "html",
-            "selector": ".accordion-body",
-            "default": "Add some content here"
-        },
         "id": {
             "type": "string",
-            "selector": ".accordion-item",
             "source": "attribute",
-            "attribute": "id"
+            "attribute": "id",
+            "selector": "div.accordion-collapse"
         },
         "parentId": {
             "type": "string",
