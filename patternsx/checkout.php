@@ -11,14 +11,15 @@
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
     <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:monsta/accordion -->
-        <div class="wp-block-monsta-accordion accordion accordion-flush"><!-- wp:monsta/accordionitem -->
+        <div class="wp-block-monsta-accordion accordion accordion-flush" id="MAcc_bubba_">
+            <!-- wp:monsta/accordionitem -->
             <div class="wp-block-monsta-accordionitem accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Header 1
+                <h2 class="accordion-header" id="headingundefined">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#undefined"
+                            aria-expanded="false">Header 1
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+                <div class="accordion-collapse collapse" aria-labelledby="headingundefined">
                     <div class="accordion-body"><!-- wp:monsta/cartshipping /--></div>
                 </div>
             </div>
@@ -26,12 +27,12 @@
 
             <!-- wp:monsta/accordionitem -->
             <div class="wp-block-monsta-accordionitem accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Header 2
+                <h2 class="accordion-header" id="headingundefined">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#undefined"
+                            aria-expanded="false">Header 2
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+                <div class="accordion-collapse collapse" aria-labelledby="headingundefined">
                     <div class="accordion-body"><!-- wp:monsta/cartpayment /--></div>
                 </div>
             </div>
@@ -39,13 +40,30 @@
 
             <!-- wp:monsta/accordionitem -->
             <div class="wp-block-monsta-accordionitem accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Header 3
+                <h2 class="accordion-header" id="headingundefined">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#undefined"
+                            aria-expanded="false">Header 3
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+                <div class="accordion-collapse collapse" aria-labelledby="headingundefined">
                     <div class="accordion-body"><!-- wp:monsta/cartreview /--></div>
+                </div>
+            </div>
+            <!-- /wp:monsta/accordionitem -->
+
+            <!-- wp:monsta/accordionitem -->
+            <div class="wp-block-monsta-accordionitem accordion-item">
+                <h2 class="accordion-header" id="headingundefined">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#undefined"
+                            aria-expanded="false">Heading
+                    </button>
+                </h2>
+                <div class="accordion-collapse collapse" aria-labelledby="headingundefined">
+                    <div class="accordion-body"><!-- wp:image {"id":21,"sizeSlug":"full","linkDestination":"none"} -->
+                        <figure class="wp-block-image size-full"><img
+                                    src="http://localhost:9090/app/uploads/2022/12/unnamed.jpg" alt=""
+                                    class="wp-image-21"/></figure>
+                        <!-- /wp:image --></div>
                 </div>
             </div>
             <!-- /wp:monsta/accordionitem --></div>

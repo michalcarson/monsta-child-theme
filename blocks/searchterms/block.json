@@ -1,0 +1,14 @@
+{
+    "apiVersion": 2,
+    "title": "Search Terms",
+    "name": "monsta/searchterms",
+    "category": "monsta",
+    "icon": "edit",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./block.css",
+    "supports": {
+        "color": true,
+        "html": false,
+        "multiple": false
+    }
+}

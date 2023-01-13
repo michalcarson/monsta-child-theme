@@ -1,0 +1,14 @@
+{
+    "apiVersion": 2,
+    "title": "Search Controls",
+    "name": "monsta/searchcontrols",
+    "category": "monsta",
+    "icon": "admin-settings",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./block.css",
+    "supports": {
+        "color": true,
+        "html": false,
+        "multiple": false
+    }
+}

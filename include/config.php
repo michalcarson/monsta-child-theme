@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'businessId' => 11007424,
+    'businessId' => WP_DEBUG ? 11007417 : 11007424,
     'affiliateId' => 0,
 ];

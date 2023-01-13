@@ -1,0 +1,14 @@
+{
+    "apiVersion": 2,
+    "title": "Search Map",
+    "name": "monsta/searchmap",
+    "category": "monsta",
+    "icon": "admin-site-alt3",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./block.css",
+    "supports": {
+        "color": true,
+        "html": false,
+        "multiple": false
+    }
+}

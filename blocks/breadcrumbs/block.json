@@ -1,0 +1,14 @@
+{
+    "apiVersion": 2,
+    "title": "Breadcrumbs",
+    "name": "monsta/breadcrumbs",
+    "category": "monsta",
+    "icon": "ellipsis",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./block.css",
+    "supports": {
+        "color": true,
+        "html": false,
+        "multiple": false
+    }
+}

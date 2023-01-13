@@ -1,0 +1,7 @@
+header svg.monsta-cartstatus {
+    height: var(--wp--preset--font-size--medium);
+    width: var(--wp--preset--font-size--medium);
+    background-color: white;
+    padding: .2rem;
+    border-radius: 4px;
+}

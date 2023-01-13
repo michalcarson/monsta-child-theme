@@ -1,0 +1,14 @@
+{
+    "apiVersion": 2,
+    "title": "Search Categories",
+    "name": "monsta/searchcategories",
+    "category": "monsta",
+    "icon": "networking",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./block.css",
+    "supports": {
+        "color": true,
+        "html": false,
+        "multiple": false
+    }
+}

@@ -18,8 +18,19 @@
     text-decoration: underline;
 }
 
-.search-page {
+.search-page,
+.monsta-search-container {
     min-height: 600px;
+}
+
+.monsta-search-container.is-layout-flex {
+    gap: .2rem;
+}
+
+.monsta-search-container.is-layout-flex .mobile-button-container {
+    flex-basis: 32px;
+    flex-grow: 0;
+    border-radius: 4px;
 }
 
 .search-map.offcanvas,

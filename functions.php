@@ -14,6 +14,10 @@ require_once(get_theme_file_path('/shortcodes/MonstaCartShortcode.php'));
 require_once(get_theme_file_path('/widgets/MonstaCartWidget.php'));
 require_once(get_theme_file_path('/widgets/MonstaCartStatusWidget.php'));
 
+//if (!function_exists('wp_get_svg')) {
+//    require(get_theme_file_path('/svg-functions.php'));
+//}
+
 /**
  * Enqueue styles
  */
@@ -42,25 +46,25 @@ add_action('wp_enqueue_scripts', function () {
 
     $baseUrl = monsta_get_baseurl();
 
-//    wp_enqueue_style(
-//        'monsta-inventory-css',
-//        $baseUrl  . '/dist/inventory.css',
-//        false,
-//        wp_get_theme()->get('Version'),
-//        'all'
-//    );
-//
-//    wp_enqueue_script(
-//        'monsta-inventory-script',
-//        $baseUrl  . '/dist/inventory.bundle.js',
-//        false,
-//        wp_get_theme()->get('Version'),
-//        true
-//    );
+    wp_enqueue_style(
+        'monsta-inventory-css',
+        $baseUrl . '/dist/inventory.css',
+        false,
+        wp_get_theme()->get('Version'),
+        'all'
+    );
+
+    wp_enqueue_script(
+        'monsta-inventory-script',
+        $baseUrl . '/dist/inventory.bundle.js',
+        false,
+        wp_get_theme()->get('Version'),
+        true
+    );
 
     wp_enqueue_style(
         'monsta-widgets-css',
-        $baseUrl  . '/dist/widgets.css',
+        $baseUrl . '/dist/widgets.css',
         false,
         wp_get_theme()->get('Version'),
         'all'
@@ -68,7 +72,7 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_enqueue_script(
         'monsta-widgets-script',
-        $baseUrl  . '/dist/widgets.bundle.js',
+        $baseUrl . '/dist/widgets.bundle.js',
         false,
         wp_get_theme()->get('Version'),
         true
@@ -99,10 +103,10 @@ add_action('wp_enqueue_scripts', function () {
     wp_localize_script('monsta-widgets-script', 'monsta', ['config' => $config]);
 });
 
-//add_action('widgets_init', function () {
-//    register_widget(new MonstaCartStatusWidget());
+add_action('widgets_init', function () {
+    register_widget(new MonstaCartStatusWidget());
 //    register_widget(new MonstaCartWidget());
-//});
+});
 
 add_filter('body_class', function ($classes) {
     if ( ! in_array('shopping', $classes)) {
@@ -111,8 +115,30 @@ add_filter('body_class', function ($classes) {
     return $classes;
 });
 
+add_filter('pre_option_firebase_credentials', function () {
+    // plugin integrate-firebase would store the Firebase credentials in the database
+    // but we keep them in the .env file where they can be managed separately and securely
+    if (is_admin()) {
+        // don't show the credentials in the admin interface
+        return [
+            'api_key' => '********',
+            'auth_domain' => '********',
+            'database_url' => '********',
+            'project_id' => '********',
+        ];
+    }
+
+    // short circuit the database option lookup by returning the credentials here
+    return [
+        'api_key' => getenv('FIREBASE_API_KEY'),
+        'auth_domain' => getenv('FIREBASE_AUTH_DOMAIN'),
+        'database_url' => getenv('FIREBASE_DB_URL') || '',
+        'project_id' => getenv('FIREBASE_PROJECT'),
+    ];
+});
+
 add_action('init', function () {
-    add_shortcode('monsta_cart', ['MonstaCartShortcode', 'display']);
+//    add_shortcode('monsta_cart', ['MonstaCartShortcode', 'display']);
 
     register_block_pattern_category('monsta', ['label' => 'MonstaCommerce']);
 });

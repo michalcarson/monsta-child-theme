@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "layout": {
+        "contentSize": "650px",
+        "wideSize": "1000px"
+    },
+    "templateParts": [
+        {
+            "name": "header",
+            "title": "Header",
+            "area": "header"
+        },
+        {
+            "name": "search_partial",
+            "title": "Search Page",
+            "area": "uncategorized"
+        }
+    ]
+}

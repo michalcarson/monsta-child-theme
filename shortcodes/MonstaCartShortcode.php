@@ -10,7 +10,11 @@ class MonstaCartShortcode
         $config = require(get_theme_file_path('/include/config.php'));
         $json = json_encode(
             array_merge(
-                ['target' => $id],
+                [
+                    'widget' => 'cartsummary',
+                    'target' => '#' . $id,
+                    'checkout' => '/checkout',
+                ],
                 $config
             )
         );
@@ -18,14 +22,14 @@ class MonstaCartShortcode
         echo <<<HERE
             <div id="{$id}"></div>
             <script>
-            const getBusinessId = () => {return {$config['businessId']};}
+            // MonstaCartShortcode
             setTimeout(() => {
-                if (typeof checkout === 'function') {
-                    checkout({$json});
+                if (typeof widgets === 'function') {
+                    widgets({$json})
                 } else {
-                    console.log('typeof checkout = ' + typeof checkout);
+                    console.log('typeof widgets = ' + typeof widgets);
                 }
-            }, 2000);
+            }, 1000);
             </script>
 HERE;
 

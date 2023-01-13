@@ -18,7 +18,11 @@ class MonstaCartWidget extends WP_Widget
         $config = require(get_theme_file_path('/include/config.php'));
         $json = json_encode(
             array_merge(
-                ['target' => $id],
+                [
+                    'widget' => 'cartsummary',
+                    'target' => $id,
+                    'checkout' => '/checkout',
+                ],
                 $config
             )
         );
@@ -27,10 +31,10 @@ class MonstaCartWidget extends WP_Widget
             <div id="{$id}"></div>
             <script>
             setTimeout(() => {
-                if (typeof checkout === 'function') {
-                    checkout({$json});
+                if (typeof widgets === 'function') {
+                    widgets({$json})
                 } else {
-                    console.log('typeof checkout = ' + typeof widgets);
+                    console.log('typeof widgets = ' + typeof widgets);
                 }
             }, 1000);
             </script>
